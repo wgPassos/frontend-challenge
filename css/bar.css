@@ -1,0 +1,19 @@
+/* Estilização da barra de progresso */
+
+#bar {
+    width: 680px;
+    height: 24px;
+    margin-top: 24px;
+    /* UI Properties */
+    background-color: var(--progress-bar-color) ;
+    border-radius: 4px;
+    opacity: 1;
+}
+
+#progressBar {
+    height: 100%;
+    width: 0%;
+    background-color: var(--progress-color);
+    border-radius: 4px;
+    transition: all 500ms ;
+}

@@ -1,0 +1,214 @@
+/* TODO STYLE */
+
+#menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* background-color: blueviolet; */
+
+    margin-top: 24px;
+    width: 680px;
+    height: 40px;
+}
+
+/* Botões */
+#status {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    /* justify-content: center;
+    text-align: center; */
+}
+
+.done, .pending {
+    box-sizing: border-box;
+    background-color:#FFFFFF;
+    border: 1px solid #DBDBDB;
+    border-radius: 20px;
+    padding: 7px 16px 6px;
+    font: normal normal normal 14px/19px Roboto;
+    color: var(--gray-first-color);
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.addClassButton {
+    border: 1px solid var(--blue-border-color);
+    background-color: #F7F7F8;
+    color: var(--blue-border-color);
+}
+
+/* Pesquisa de tarefas */
+#searchTask {
+    width: 450px;
+    height: 40px;
+    /* UI Properties */
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #DBDBDB;
+    border-radius: 4px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    font-size: var(--font-size-secondy);
+    color: var(--gray-first-color);
+    font-weight: 400;
+    outline: none;
+}
+
+main {
+    /* background-color: teal; */
+    width: 680px;
+    height: 280px;
+    margin-top: 24px;
+}
+
+#addTask {
+    display: flex;
+}
+
+.opacity {
+    opacity: .5;
+}
+
+.opacityFull {
+    opacity: 1;
+}
+
+#newTask {
+    width: 100%;
+    height: 48px;
+    box-sizing: border-box;
+    padding-left: 10px;
+    outline: none;
+    /* UI Properties */
+    background: #F7F7F7 0% 0% no-repeat padding-box;
+    border: 1px solid #DBDBDB;
+    border-radius: 4px 0px 0px 4px;
+}
+
+
+#newTask:placeholder-shown {
+    height: 48px;
+    /* UI Properties */
+    background: #F7F7F7 0% 0% no-repeat padding-box;
+    border: 1px solid #DBDBDB;
+    /* border-radius: 4px 0px 0px 4px; */
+    /* opacity: 1; */
+}
+
+
+/* Tarefas */
+#tasksGroup {
+    /* background-color: #4aa48a; */
+    margin-top: 16px;
+    padding: 0;
+    height: 216px;
+    overflow-y: auto;
+    width: 692px;
+    /* position: relative; */
+}
+
+.liTask {
+    box-sizing: border-box;
+    list-style: none;
+    /* width: calc(100% - 12px); */
+    width: 680px;
+    height: 48px;
+    /* UI Properties */
+    background: #F4F4F4 0% 0% no-repeat padding-box;
+    border: 1px solid #DBDBDB;
+    border-radius: 4px;
+    font-size: var(--font-size-secondy);
+    font-weight: 400;
+    padding-left: 10px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--gray-first-color);
+    background-color: var(--gray-second-color);
+    cursor: pointer;
+}
+
+::-webkit-scrollbar {
+    background-color: var(--progress-bar-color);
+    width: 8px;
+    border-radius: 9px;
+    /* position: relative; */
+    /* right: 4px; */
+    /* margin-left: 4px; */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--gray-first-color);
+    border-radius: 9px;
+}
+
+button {
+    cursor: pointer;
+}
+
+.buttonLI {
+    display: none;
+    height: 100%;
+}
+.btnIcons{
+    width: 44px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: none;
+    
+    z-index: 1;
+}
+#btnPlus {
+    background-color: var(--blue-border-color);
+    color: var(--blue-border-color);
+    border-radius: 0px 4px 0px 0px;
+    /* opacity: .5; */
+}
+.btnTaskDelete {
+    color: #E34F4F;
+    background-color:#E34F4F;
+}
+
+.btnTaskDone {
+    /* background-color: var(--blue-border-color); */
+    background-color: var(--progress-color);
+    color: var(--progress-color);
+}
+
+i {
+    box-sizing: border-box;
+    /* padding: 5px; */
+    border-radius: 50%;
+    background-color: transparent;
+}
+
+#btnPlus > i {
+    padding: 5px;
+    background-color: #FFFFFF;
+}
+
+.btnTaskDone  > i {
+    background-color: #FFFFFF;
+    padding: 5px;
+}
+
+.btnTaskDelete > i {
+    background-color: #FFFFFF;
+    padding: 5px;
+}
+
+.fa-class-button {
+    box-sizing: border-box;
+    /* border-radius: 0%; */
+    /* background-color: transparent; */
+    margin-right: 5px;
+    box-sizing: border-box;
+    padding: 0px 0px 0px 0px;
+    background-color: #F7F7F8;
+}

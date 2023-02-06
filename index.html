@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>To do List -  Sizebay</title>
+    <!-- Fonte Instalada -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" >
+    <!-- Links CSS -->
+    <link rel='stylesheet' type='text/css' media='screen' href='/frontend-challenge/css/style.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/frontend-challenge/css/root.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/frontend-challenge/css/bar.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/frontend-challenge/css/todo.css'>
+    <!-- Links JS -->
+    <script src='/frontend-challenge/js/todo.js' defer></script>
+    <script src='/frontend-challenge/js/app.js' defer></script>
+    <script src='/frontend-challenge/js/bar.js' defer></script>
+</head>
+<body>
+    <div id="box">
+
+        <header>
+            <div class="date">
+                <p id="day">ool</p>
+                <div class="month__year">
+                    <p id="month"></p>
+                    <p id="year"></p>
+                </div>
+            </div>
+            <div class="day__week">
+                <p id="dayWeek"></p>
+            </div>
+        </header>
+
+        <div id="bar">
+            <div id="progressBar"></div>
+        </div>
+
+        <section id="menu">
+            <div id="status">
+                <button id="done" class="done">Done</button>
+                <button id="pending" class="pending">Pending</button>
+                <!-- <i class="fa-solid fa-check fa-class-button">
+                <i class="fa-solid fa-check fa-class-button"> -->
+            </div>
+            <input type="text" name="task" placeholder="Search task" id="searchTask">
+        </section>
+
+        <main>
+            <section id="addTask" class="opacity">
+                <input type="text" placeholder="Add new item ..." id="newTask" >
+                <button id="btnPlus" class="btnIcons"><i class="fa-solid fa-plus"></i></button>
+            </section>
+            
+            <ul id="tasksGroup">
+                <!-- <li class="liTask">ola
+                    <div class="buttonLI">
+                        <button class="btnTaskDelete" class="btnIcons"><i class="fa-solid fa-minus"></i></button>
+                        <button class="btnTaskDone" class="btnIcons"><i class="fa-solid fa-check fa-bg-buttons"></i></button>
+
+                    </div>
+                </li>
+                <li class="liTask">
+                    <div class="buttonLI">
+                        <button class="btnTaskDelete" class="btnIcons"><i class="fa-solid fa-minus"></i></button>
+                        <button class="btnTaskDone" class="btnIcons"><i class="fa-solid fa-check"></i></button>
+
+                    </div>
+                </li> -->
+            </ul>
+        </main>
+
+    </div>
+</body>
+</html>
