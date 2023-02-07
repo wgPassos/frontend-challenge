@@ -17,3 +17,9 @@
     border-radius: 4px;
     transition: all 500ms ;
 }
+
+@media only screen and (max-width: 375px) {
+    #bar {
+        width: 310px;
+    }
+  }

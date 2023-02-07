@@ -79,7 +79,11 @@ function printListDone() {
             
             let li = document.createElement("li");
             li.innerText = taskDone.conteudo;
+            // let tooltip = document.createElement("span");
+            // tooltip.innerText = "Edit task"
             li.classList.add("liTask");
+
+            // li.appendChild(tooltip);
             ul.appendChild(li);
             aumenta();
 
@@ -101,10 +105,15 @@ function printList(){
     tasks.forEach((taskPending) => {
 
         if (taskPending.concluido != true) {
+            let tooltip = document.createElement("span");
+            tooltip.innerHTML = "Edit task"
+
             let li = document.createElement("li");
             li.innerText = taskPending.conteudo;
             li.classList.add("liTask");
+            // li.classList.add("tooltip");
             ul.appendChild(li);
+            // li.appendChild(tooltip);
             li.innerHTML += 
             `<div class="buttonLI">
                 <button class="btnTaskDelete btnIcons"><i class="fa-solid fa-minus"></i></button>

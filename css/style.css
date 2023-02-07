@@ -100,3 +100,12 @@ header {
 }
 
 
+@media only screen and (max-width: 375px) {
+    #box {
+        width: 342px;
+        height: 780px;
+    }
+    header {
+        width: 310px;
+    }
+  }

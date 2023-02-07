@@ -212,3 +212,27 @@ i {
     padding: 0px 0px 0px 0px;
     background-color: #F7F7F8;
 }
+
+@media only screen and (max-width: 375px) {
+    #menu {
+        width: 310px;
+        height: 91px;
+        flex-direction: column-reverse;
+        align-items: flex-end;
+    }
+    #searchTask {
+        width: 310px;
+    }
+    main {
+        width: 310px;
+    }
+    #tasksGroup {
+        width: 322px;
+        height: 336px;
+        overflow-y: auto;
+        box-sizing: border-box;
+    }
+    .liTask {
+        width: 310px;
+    }
+  }
