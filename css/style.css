@@ -7,6 +7,8 @@ body {
     left: 0px;
     width: 100%;
     height: 100%;
+    margin: 0;
+    padding: 0;
 /* UI Properties */
     /* background: #555555 0% 0% no-repeat padding-box; */
     background: #555555;
