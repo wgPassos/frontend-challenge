@@ -106,6 +106,7 @@ header {
     #box {
         width: 342px;
         height: 780px;
+        margin: 16px;
     }
     header {
         width: 310px;
