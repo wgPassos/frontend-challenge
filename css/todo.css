@@ -16,6 +16,7 @@
     display: flex;
     gap: 8px;
     align-items: center;
+    /* position: relative; */
     /* justify-content: center;
     text-align: center; */
 }
@@ -30,6 +31,18 @@
     color: var(--gray-first-color);
     display: flex;
     flex-direction: row-reverse;
+}
+
+.done-no-results {
+    font-size: var(--font-size-secondy);
+    color: var(--gray-first-color);
+    font-weight: 400;
+    /* display: none; */
+}
+
+.under {
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 .addClassButton {

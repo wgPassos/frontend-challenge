@@ -73,10 +73,16 @@ function printListDone() {
 
     styleButton(btnTaskDone, btnTaskPending);
     // ativaBtn(btnTaskDone);
+    console.log(tasks.concluido);
+    if (tasks.concluido == undefined) {
+    let span = document.querySelector(".done-no-results");
+    console.log(span);
+    // ------------ AQUIIII ------
+    span.setAttribute("style", "display: block");
+    }
     
     tasks.forEach((taskDone) => {
         if (taskDone.concluido == true) {
-            
             let li = document.createElement("li");
             li.innerText = taskDone.conteudo;
             // let tooltip = document.createElement("span");
@@ -186,7 +192,7 @@ function styleButton (button1, button2) {
 
     input.addEventListener("click", () => {
         button1.classList.remove("addClassButton");
-        // console.log(button1.firstElementChild);
+        console.log(button1.firstElementChild);
         button1.firstElementChild.remove();
     })
     // console.log(statusButtons);
@@ -194,6 +200,8 @@ function styleButton (button1, button2) {
 
 
 searchTask.addEventListener("keyup", search);
+searchTask.addEventListener("focus", searchFocus);
+searchTask.addEventListener("focusout", searchFocusOut);
 
 // BUSCA DE TAREFAS
 function search () {
@@ -202,22 +210,31 @@ function search () {
 
     let tasksUl = ul.getElementsByTagName("li");
     // console.log(tasksUl);
-
+    // divInput.style.display = "none";
+    
     for (let position in tasksUl) {
         if (true === isNaN(position)) { // EI!!! Se for verdade que a posição não e numérica então passe para o próximo indice
             continue;
         }
-        // console.log(position);
-
+        console.log(position);
+        
         let taskContent = tasksUl[position].innerHTML.toLowerCase();
-
+        
         if (true === taskContent.includes(expression)) {
             tasksUl[position].style.display = "flex";
         } else {
+            console.log(divInput);
             tasksUl[position].style.display = "none";
         }
     }
 }
 
 
+function searchFocus() {
+    divInput.style.display = "none";
 
+}
+function searchFocusOut() {
+    divInput.style.display = "flex";
+
+}
