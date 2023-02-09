@@ -33,14 +33,14 @@
     flex-direction: row-reverse;
 }
 
-.done-no-results {
+.done-no-results, .search-no-results {
     font-size: var(--font-size-secondy);
     color: var(--gray-first-color);
     font-weight: 400;
     /* display: none; */
 }
 
-.under {
+.underline-done {
     text-decoration: underline;
     cursor: pointer;
 }

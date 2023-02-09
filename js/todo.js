@@ -24,8 +24,7 @@ btnPlus.addEventListener("click", buttonCreateList);
 function opacityFull () {
     // console.log(divInput);
     divInput.setAttribute("style", "opacity:" +1);
-    console.log(this);
-    // styleButton(btnTaskDone, btnTaskPending, this);
+    // console.log(this);
 }
 function focusOut () {
     // console.log(divInput);
@@ -62,6 +61,7 @@ function buttonCreateList() {
 function clearList() {
     input.value = "";
     ul.innerHTML = null;
+    // console.log(ul);
 }
 
 btnTaskDone.addEventListener("click", printListDone);
@@ -72,21 +72,28 @@ function printListDone() {
     // console.log(btnTaskDone);
 
     styleButton(btnTaskDone, btnTaskPending);
-    // ativaBtn(btnTaskDone);
-    console.log(tasks.concluido);
-    if (tasks.concluido == undefined) {
-    let span = document.querySelector(".done-no-results");
-    console.log(span);
-    // ------------ AQUIIII ------
-    span.setAttribute("style", "display: block");
-    }
+
+    ul.innerHTML = `
+    <span class="done-no-results">There are no items marked as done. <span class="underline-done">Clear the filter here</span> to see all items.</span>
+    `
+    // CLICANDO NO LINK DA FRASE "Clear the filter here"
+    // let underlineDone = document.querySelector(".underline-done");
     
+    console.log(ul.firstElementChild.firstElementChild);
+    ul.firstElementChild.firstElementChild.addEventListener("click", () => {
+        console.log("o Span pegou!");
+        clearFilterDone (btnTaskDone);
+        // console.log(clearFilterDone);
+        printList();
+    })
+
     tasks.forEach((taskDone) => {
         if (taskDone.concluido == true) {
             let li = document.createElement("li");
             li.innerText = taskDone.conteudo;
             // let tooltip = document.createElement("span");
             // tooltip.innerText = "Edit task"
+            clearList();
             li.classList.add("liTask");
 
             // li.appendChild(tooltip);
@@ -96,6 +103,7 @@ function printListDone() {
         } 
     })
 }
+
 
 // FILTRANDO AS TAREFAS PENDENTES
 btnTaskPending.addEventListener("click", printListPending);
@@ -111,8 +119,8 @@ function printList(){
     tasks.forEach((taskPending) => {
 
         if (taskPending.concluido != true) {
-            let tooltip = document.createElement("span");
-            tooltip.innerHTML = "Edit task"
+            // let tooltip = document.createElement("span");
+            // tooltip.innerHTML = "Edit task"
 
             let li = document.createElement("li");
             li.innerText = taskPending.conteudo;
@@ -187,16 +195,31 @@ function styleButton (button1, button2) {
     // console.log(button);
     let i = document.createElement("i");
     // console.log(statusButtons);
-    i.innerHTML = `<i class="fa-solid fa-check fa-class-button"></i>`
+    i.innerHTML = `<i class="fa-solid fa-check fa-class-button">`
     button1.appendChild(i);
 
+    // clearFilterDone (button1);
+    // input.addEventListener("click", clearFilterDone);
+
     input.addEventListener("click", () => {
-        button1.classList.remove("addClassButton");
-        console.log(button1.firstElementChild);
-        button1.firstElementChild.remove();
+        clearFilterDone(button1);
+    
     })
-    // console.log(statusButtons);
 } 
+
+function clearFilterDone (button1) {
+    // input.addEventListener("click", () => {
+        
+        console.log(button1.innerText);
+        if (button1.innerText === "Done") {
+            console.log(button1.firstElementChild);
+            button1.innerHTML = "Done";
+            // button1.firstElementChild.remove();
+            button1.classList.remove("addClassButton");
+            console.log(button1.firstElementChild);
+        }
+    // })
+}
 
 
 searchTask.addEventListener("keyup", search);
@@ -207,24 +230,41 @@ searchTask.addEventListener("focusout", searchFocusOut);
 function search () {
     let expression = searchTask.value.toLowerCase();
     // console.log(expression);
-
+    
     let tasksUl = ul.getElementsByTagName("li");
-    // console.log(tasksUl);
+    console.log(tasksUl);
     // divInput.style.display = "none";
+    // tasksUl.style.display = "none";
     
     for (let position in tasksUl) {
         if (true === isNaN(position)) { // EI!!! Se for verdade que a posição não e numérica então passe para o próximo indice
             continue;
         }
-        console.log(position);
+        // console.log(position);
         
         let taskContent = tasksUl[position].innerHTML.toLowerCase();
         
         if (true === taskContent.includes(expression)) {
             tasksUl[position].style.display = "flex";
         } else {
-            console.log(divInput);
+            // console.log(divInput);
             tasksUl[position].style.display = "none";
+            ul.innerHTML = `
+            <span class="search-no-results"> <span class="underline-done">Clear the search here</span> to see all items.</span>
+            `
+        // CLICANDO NO LINK DA FRASE "Clear the filter here"
+        // let underlineDone = document.querySelector(".underline-done");
+    
+        console.log(ul.firstElementChild.firstElementChild);
+        ul.firstElementChild.firstElementChild.addEventListener("click", () => {
+            console.log("o Span pegou!");
+            clearList();
+            printList();
+            clearFilterDone (btnTaskDone);
+            // console.log(clearFilterDone);
+            searchTask.addEventListener("focusout", searchFocusOut);
+            })
+
         }
     }
 }
@@ -232,7 +272,7 @@ function search () {
 
 function searchFocus() {
     divInput.style.display = "none";
-
+    
 }
 function searchFocusOut() {
     divInput.style.display = "flex";
