@@ -60,7 +60,7 @@ function buttonCreateList() {
 // LIMPA INPUT APÓS INSERIR NOVA TAREFA
 function clearList() {
     input.value = "";
-    ul.innerHTML = null;
+    ul.innerHTML = null; // SERA QUE PRECISO TIRAR ISSO
     // console.log(ul);
 }
 
@@ -73,34 +73,38 @@ function printListDone() {
 
     styleButton(btnTaskDone, btnTaskPending);
 
-    ul.innerHTML = `
-    <span class="done-no-results">There are no items marked as done. <span class="underline-done">Clear the filter here</span> to see all items.</span>
-    `
     // CLICANDO NO LINK DA FRASE "Clear the filter here"
     // let underlineDone = document.querySelector(".underline-done");
     
-    console.log(ul.firstElementChild.firstElementChild);
-    ul.firstElementChild.firstElementChild.addEventListener("click", () => {
-        console.log("o Span pegou!");
-        clearFilterDone (btnTaskDone);
-        // console.log(clearFilterDone);
-        printList();
-    })
-
+    // console.log(ul.firstElementChild.firstElementChild);
+    // ul.firstElementChild.firstElementChild.addEventListener("click", () => {
+    //     console.log("o Span pegou!");
+    //     clearFilterDone (btnTaskDone);
+    //     // console.log(clearFilterDone);
+        // printList();
+    // })
+    
     tasks.forEach((taskDone) => {
         if (taskDone.concluido == true) {
             let li = document.createElement("li");
             li.innerText = taskDone.conteudo;
             // let tooltip = document.createElement("span");
             // tooltip.innerText = "Edit task"
-            clearList();
+            // clearList();
             li.classList.add("liTask");
-
+            
             // li.appendChild(tooltip);
             ul.appendChild(li);
+            // printList();
             aumenta();
 
         } 
+        // else {
+        //     ul.innerHTML = `
+        //     <span class="done-no-results">There are no items marked as done. <span class="underline-done">Clear the filter here</span> to see all items.</span>
+        //     `
+            
+        // }
     })
 }
 
@@ -224,15 +228,16 @@ function clearFilterDone (button1) {
 
 searchTask.addEventListener("keyup", search);
 searchTask.addEventListener("focus", searchFocus);
-searchTask.addEventListener("focusout", searchFocusOut);
+// searchTask.addEventListener("focusout", searchFocusOut);
 
 // BUSCA DE TAREFAS
 function search () {
     let expression = searchTask.value.toLowerCase();
     // console.log(expression);
-    
+    // ul.innerHTML = "";
+
     let tasksUl = ul.getElementsByTagName("li");
-    console.log(tasksUl);
+    // console.log(tasksUl);
     // divInput.style.display = "none";
     // tasksUl.style.display = "none";
     
@@ -255,16 +260,18 @@ function search () {
         // CLICANDO NO LINK DA FRASE "Clear the filter here"
         // let underlineDone = document.querySelector(".underline-done");
     
-        console.log(ul.firstElementChild.firstElementChild);
-        ul.firstElementChild.firstElementChild.addEventListener("click", () => {
-            console.log("o Span pegou!");
-            clearList();
-            printList();
-            clearFilterDone (btnTaskDone);
-            // console.log(clearFilterDone);
-            searchTask.addEventListener("focusout", searchFocusOut);
-            })
+            console.log(ul.firstElementChild.firstElementChild);
+            ul.firstElementChild.firstElementChild.addEventListener("click", () => {
+                console.log("o Span pegou!");
+                clearList();
+                printList();
+                clearFilterDone (btnTaskDone);
+                searchTask.value = ""
+                // console.log(clearFilterDone);
+                // searchTask.addEventListener("focusout", searchFocusOut);
+                })
 
+                divInput.style.display = "flex";
         }
     }
 }
@@ -274,7 +281,7 @@ function searchFocus() {
     divInput.style.display = "none";
     
 }
-function searchFocusOut() {
-    divInput.style.display = "flex";
+// function searchFocusOut() {
+//     divInput.style.display = "flex";
 
-}
+// }
