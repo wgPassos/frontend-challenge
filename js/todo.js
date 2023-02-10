@@ -70,41 +70,55 @@ btnTaskDone.addEventListener("click", printListDone);
 function printListDone() {
     clearList();
     // console.log(btnTaskDone);
+    // console.log(ul);
 
     styleButton(btnTaskDone, btnTaskPending);
 
+    function findDone (list, index) {
+        return list.map(tasks => tasks[index]);
+    }
+
+    let listConcluido = [];
+    listConcluido.push(findDone(tasks, "concluido"));
+    console.log(listConcluido);
+
     // CLICANDO NO LINK DA FRASE "Clear the filter here"
-    // let underlineDone = document.querySelector(".underline-done");
+    ul.innerHTML = `
+    <span class="done-no-results">There are no items marked as done. <span class="underline-done">Clear the filter here</span> to see all items.</span>
+    `
+    // console.log(ul);
     
     // console.log(ul.firstElementChild.firstElementChild);
     // ul.firstElementChild.firstElementChild.addEventListener("click", () => {
-    //     console.log("o Span pegou!");
-    //     clearFilterDone (btnTaskDone);
-    //     // console.log(clearFilterDone);
+        //     console.log("o Span pegou!");
+        //     clearFilterDone (btnTaskDone);
+        //     // console.log(clearFilterDone);
         // printList();
-    // })
-    
+        // })
+        
     tasks.forEach((taskDone) => {
         if (taskDone.concluido == true) {
             let li = document.createElement("li");
             li.innerText = taskDone.conteudo;
-            // let tooltip = document.createElement("span");
-            // tooltip.innerText = "Edit task"
-            // clearList();
             li.classList.add("liTask");
-            
-            // li.appendChild(tooltip);
             ul.appendChild(li);
-            // printList();
             aumenta();
-
+            // console.log(ul);
+                // let tooltip = document.createElement("span");
+                // tooltip.innerText = "Edit task"
+                // clearList();
+                
+                // li.appendChild(tooltip);
+                // printList();
         } 
-        // else {
-        //     ul.innerHTML = `
-        //     <span class="done-no-results">There are no items marked as done. <span class="underline-done">Clear the filter here</span> to see all items.</span>
-        //     `
+            // else {
+                // console.log(ul);
+            // let underlineDone = document.querySelector(".underline-done");
+            // ul.innerHTML = `
+            // <span class="done-no-results">There are no items marked as done. <span class="underline-done">Clear the filter here</span> to see all items.</span>
+            // `
             
-        // }
+            // }
     })
 }
 
@@ -251,28 +265,29 @@ function search () {
         
         if (true === taskContent.includes(expression)) {
             tasksUl[position].style.display = "flex";
-        } else {
-            // console.log(divInput);
-            tasksUl[position].style.display = "none";
-            ul.innerHTML = `
-            <span class="search-no-results"> <span class="underline-done">Clear the search here</span> to see all items.</span>
-            `
-        // CLICANDO NO LINK DA FRASE "Clear the filter here"
-        // let underlineDone = document.querySelector(".underline-done");
-    
-            console.log(ul.firstElementChild.firstElementChild);
-            ul.firstElementChild.firstElementChild.addEventListener("click", () => {
-                console.log("o Span pegou!");
-                clearList();
-                printList();
-                clearFilterDone (btnTaskDone);
-                searchTask.value = ""
-                // console.log(clearFilterDone);
-                // searchTask.addEventListener("focusout", searchFocusOut);
-                })
-
-                divInput.style.display = "flex";
         }
+        //  else {
+        //     // console.log(divInput);
+        //     tasksUl[position].style.display = "none";
+        //     ul.innerHTML = `
+        //     <span class="search-no-results"> <span class="underline-done">Clear the search here</span> to see all items.</span>
+        //     `
+        // // CLICANDO NO LINK DA FRASE "Clear the filter here"
+        // // let underlineDone = document.querySelector(".underline-done");
+    
+        //     console.log(ul.firstElementChild.firstElementChild);
+        //     ul.firstElementChild.firstElementChild.addEventListener("click", () => {
+        //         console.log("o Span pegou!");
+        //         clearList();
+        //         printList();
+        //         clearFilterDone (btnTaskDone);
+        //         searchTask.value = ""
+        //         // console.log(clearFilterDone);
+        //         // searchTask.addEventListener("focusout", searchFocusOut);
+        //         })
+
+        //         // divInput.style.display = "flex";
+        // }
     }
 }
 
