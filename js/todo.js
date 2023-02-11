@@ -82,6 +82,17 @@ function printListDone() {
     listConcluido.push(findDone(tasks, "concluido"));
     console.log(listConcluido);
 
+    listConcluido.forEach((value) => {
+        if (value )
+        console.log(value);
+    })
+
+    
+    //-----
+    // TALVEZ - usar FOR in -  saber que dentro desse for se usa --- list["index"]
+    //-----
+
+
     // CLICANDO NO LINK DA FRASE "Clear the filter here"
     ul.innerHTML = `
     <span class="done-no-results">There are no items marked as done. <span class="underline-done">Clear the filter here</span> to see all items.</span>
@@ -248,7 +259,7 @@ searchTask.addEventListener("focus", searchFocus);
 function search () {
     let expression = searchTask.value.toLowerCase();
     // console.log(expression);
-    // ul.innerHTML = "";
+    ul.innerHTML = "";
 
     let tasksUl = ul.getElementsByTagName("li");
     // console.log(tasksUl);
