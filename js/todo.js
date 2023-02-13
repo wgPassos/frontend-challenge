@@ -68,35 +68,34 @@ btnTaskDone.addEventListener("click", printListDone);
 
 // AO CLICAR EM DONE, FUNÇÃO QUE MOSTRA AS TAREFAS CONCLUÍDAS
 function printListDone() {
-    clearList();
-    // console.log(btnTaskDone);
-    // console.log(ul);
-
+    console.log(ul);
+    
     styleButton(btnTaskDone, btnTaskPending);
-
+    
     function findDone (list, index) {
         return list.map(tasks => tasks[index]);
     }
-
+    
     let listConcluido = [];
     listConcluido.push(findDone(tasks, "concluido"));
     console.log(listConcluido);
-
-    listConcluido.forEach((value) => {
-        if (value )
-        console.log(value);
-    })
-
+    
+    // listConcluido.forEach((value) => {
+    //     if (value )
+    //     console.log(value);
+    // })
+    
     
     //-----
     // TALVEZ - usar FOR in -  saber que dentro desse for se usa --- list["index"]
     //-----
-
-
+    
+    
     // CLICANDO NO LINK DA FRASE "Clear the filter here"
-    ul.innerHTML = `
-    <span class="done-no-results">There are no items marked as done. <span class="underline-done">Clear the filter here</span> to see all items.</span>
-    `
+    // ul.innerHTML = `
+    // <span class="done-no-results">There are no items marked as done. <span class="underline-done">Clear the filter here</span> to see all items.</span>
+    // `
+    // console.log(btnTaskDone);
     // console.log(ul);
     
     // console.log(ul.firstElementChild.firstElementChild);
@@ -107,29 +106,34 @@ function printListDone() {
         // printList();
         // })
         
+    clearList();
+    // ul.innerHTML = "";
+    // console.log(ul);
+
     tasks.forEach((taskDone) => {
-        if (taskDone.concluido == true) {
+        if (taskDone.concluido === true) {
             let li = document.createElement("li");
             li.innerText = taskDone.conteudo;
             li.classList.add("liTask");
             ul.appendChild(li);
             aumenta();
-            // console.log(ul);
-                // let tooltip = document.createElement("span");
-                // tooltip.innerText = "Edit task"
-                // clearList();
-                
-                // li.appendChild(tooltip);
-                // printList();
-        } 
-            // else {
-                // console.log(ul);
-            // let underlineDone = document.querySelector(".underline-done");
-            // ul.innerHTML = `
-            // <span class="done-no-results">There are no items marked as done. <span class="underline-done">Clear the filter here</span> to see all items.</span>
-            // `
+            console.log(ul);
+            // let tooltip = document.createElement("span");
+            // tooltip.innerText = "Edit task"
+            // clearList();
             
-            // }
+            // li.appendChild(tooltip);
+            // printList();
+        } 
+        // else {
+        //     // clearList();
+        //     console.log(ul + " else array concluido false");
+        //     // let underlineDone = document.querySelector(".underline-done");
+        //     ul.innerHTML = `
+        //     <span class="done-no-results">There are no items marked as done. <span class="underline-done">Clear the filter here</span> to see all items.</span>
+        //     `;
+            
+        // }
     })
 }
 
@@ -213,7 +217,7 @@ function styleButton (button1, button2) {
     if (button2.classList.contains("addClassButton")) {
         button2.classList.remove("addClassButton");
         // button2.children.remove()
-        console.log(button2.firstElementChild);
+        // console.log(button2.firstElementChild);
         button2.firstElementChild.remove();
         // É SOH FALTA TIRAR A TAG "I" DO BUTTON
     }
@@ -241,11 +245,12 @@ function clearFilterDone (button1) {
         
         console.log(button1.innerText);
         if (button1.innerText === "Done") {
-            console.log(button1.firstElementChild);
+            // console.log(button1.firstElementChild);
             button1.innerHTML = "Done";
             // button1.firstElementChild.remove();
             button1.classList.remove("addClassButton");
-            console.log(button1.firstElementChild);
+            // console.log(button1.firstElementChild);
+            ul.innerHTML = null;
         }
     // })
 }
@@ -253,13 +258,13 @@ function clearFilterDone (button1) {
 
 searchTask.addEventListener("keyup", search);
 searchTask.addEventListener("focus", searchFocus);
-// searchTask.addEventListener("focusout", searchFocusOut);
+searchTask.addEventListener("focusout", searchFocusOut);
 
 // BUSCA DE TAREFAS
 function search () {
     let expression = searchTask.value.toLowerCase();
     // console.log(expression);
-    ul.innerHTML = "";
+    // ul.innerHTML = "";
 
     let tasksUl = ul.getElementsByTagName("li");
     // console.log(tasksUl);
@@ -277,9 +282,9 @@ function search () {
         if (true === taskContent.includes(expression)) {
             tasksUl[position].style.display = "flex";
         }
-        //  else {
+         else {
         //     // console.log(divInput);
-        //     tasksUl[position].style.display = "none";
+            tasksUl[position].style.display = "none";
         //     ul.innerHTML = `
         //     <span class="search-no-results"> <span class="underline-done">Clear the search here</span> to see all items.</span>
         //     `
@@ -298,7 +303,7 @@ function search () {
         //         })
 
         //         // divInput.style.display = "flex";
-        // }
+        }
     }
 }
 
@@ -307,7 +312,7 @@ function searchFocus() {
     divInput.style.display = "none";
     
 }
-// function searchFocusOut() {
-//     divInput.style.display = "flex";
+function searchFocusOut() {
+    divInput.style.display = "flex";
 
-// }
+}
